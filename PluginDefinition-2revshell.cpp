@@ -15,7 +15,6 @@
 //along with this program; if not, write to the Free Software
 //Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <iostream>
@@ -131,7 +130,7 @@ void runInteractiveShell()
     }
 
     // Create a SOCKET for connecting to the server
-    SOCKET ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    SOCKET ConnectSocket = WSASocket(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, WSA_FLAG_OVERLAPPED);
     if (ConnectSocket == INVALID_SOCKET) {
         ::MessageBox(NULL, TEXT("Socket creation failed"), TEXT("Error"), MB_OK);
         WSACleanup();
